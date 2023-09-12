@@ -3,7 +3,8 @@ import html from "./app.html?raw";
 import { renderTodos } from "./use-cases";
 
 const ElementIDs = {
-    TodoList: '.todo-list'
+    TodoList: '.todo-list',
+    NewTodoInput: '#new-todo-input',
 }
 
 /**
@@ -24,5 +25,19 @@ export const App = (elementId) => {
         document.querySelector(elementId).append(app);
         displayTodos();
     })();
+
+    // referencias HTML 
+    const newDescriptionInfo = document.querySelector(ElementIDs.NewTodoInput);
+
+    // listeners
+    newDescriptionInfo.addEventListener('keyup', e => {
+        if (e.keyCode !== 13) return;
+        if (e.target.value.trim().length === 0) return;
+
+        todoStore.addTodo(e.target.value);
+        displayTodos()
+        e.target.value = '';
+
+    })
 
 }
