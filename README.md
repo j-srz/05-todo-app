@@ -1,4 +1,4 @@
-# Balckjack con Vite
+# TodoApp con Vite
 
 Pasos para ejecutar el proyecto
 
